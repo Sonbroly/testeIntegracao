@@ -1,0 +1,17 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+services:
+  - mysql
+ 
+before_install:
+  - mysql -e 'CREATE DATABASE if not exists casadocodigo;'
+  - mysql -u root -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '123456';"
+  - mysql -u root -e "GRANT ALL ON casadocodigo.* TO 'root'@'localhost';"
+
+script: 
+  - mvn test -Dspring.profiles.active=tests
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  
