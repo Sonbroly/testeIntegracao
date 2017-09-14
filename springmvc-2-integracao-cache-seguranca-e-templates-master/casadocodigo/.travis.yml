@@ -7,9 +7,9 @@ services:
   - mysql
  
 before_install:
-  - mysql -e 'CREATE DATABASE if not exists casadocodigo;'
+  - mysql -e 'CREATE DATABASE if not exists casadocodigo_test;'
   - mysql -u root -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '123456';"
-  - mysql -u root -e "GRANT ALL ON casadocodigo.* TO 'root'@'localhost';"
+  - mysql -u root -e "GRANT ALL ON casadocodigo_test.* TO 'root'@'localhost';"
 
 script: ant BackendSingletonTests
   
